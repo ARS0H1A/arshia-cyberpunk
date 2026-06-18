@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARSHIA.CYBER // Portfolio v3.0</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --neon-cyan: #00f0ff;
@@ -12,17 +12,17 @@
   --neon-purple: #8338ec;
   --neon-yellow: #ffbe0b;
   --neon-green: #06ffa5;
-  --neon-red: #ff0040;
   --bg-dark: #050514;
   --bg-darker: #020208;
   --glass-bg: rgba(20, 20, 40, 0.45);
   --glass-border: rgba(0, 240, 255, 0.25);
   --text-primary: #e0e6ff;
   --text-muted: #8a93b8;
+  --danger: #ff3860;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body {
-  font-family: 'JetBrains Mono', 'Orbitron', monospace;
+  font-family: 'Inter', 'Orbitron', sans-serif;
   background: var(--bg-darker);
   color: var(--text-primary);
   overflow-x: hidden;
@@ -47,8 +47,6 @@ body::after {
 }
 @keyframes bgPulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
 @keyframes gridMove { 0%{transform:translate(0,0)} 100%{transform:translate(50px,50px)} }
-@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-@keyframes slideIn { from{transform:translateY(-30px);opacity:0} to{transform:translateY(0);opacity:1} }
 
 /* NAV */
 nav {
@@ -64,12 +62,14 @@ nav {
   font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem;
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: 0 0 20px rgba(0,240,255,0.4);
   letter-spacing: 2px;
 }
-.nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a {
-  color: var(--text-primary); text-decoration: none; font-weight: 700;
-  position: relative; transition: color 0.3s; font-size: 0.9rem;
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  position: relative; transition: color 0.3s;
+  font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
 }
 .nav-links a:hover { color: var(--neon-cyan); }
 .nav-links a::after {
@@ -80,15 +80,15 @@ nav {
 .nav-links a:hover::after { transform: scaleX(1); }
 .user-info { display: flex; align-items: center; gap: 0.8rem; }
 .user-badge {
-  padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+  padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
   background: rgba(0,240,255,0.15); border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
-  text-transform: uppercase; letter-spacing: 1px;
+  font-family: 'Orbitron', sans-serif;
 }
 .user-badge.admin { background: rgba(255,0,110,0.15); border-color: var(--neon-pink); color: var(--neon-pink); }
 .logout-btn {
   background: transparent; border: 1px solid var(--neon-pink); color: var(--neon-pink);
   padding: 0.4rem 1rem; border-radius: 20px; cursor: pointer; font-family: inherit;
-  font-weight: 700; transition: all 0.3s; font-size: 0.85rem;
+  font-weight: 700; transition: all 0.3s; font-size: 0.8rem;
 }
 .logout-btn:hover { background: var(--neon-pink); color: #fff; box-shadow: 0 0 20px var(--neon-pink); }
 
@@ -118,9 +118,9 @@ nav {
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.auth-sub { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.85rem; }
+.auth-sub { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; }
 .form-group { margin-bottom: 1.2rem; }
-.form-group label { display: block; margin-bottom: 0.5rem; color: var(--neon-cyan); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.form-group label { display: block; margin-bottom: 0.5rem; color: var(--neon-cyan); font-size: 0.85rem; font-weight: 700; }
 .form-group input, .form-group select, .form-group textarea {
   width: 100%; padding: 0.8rem 1rem; background: rgba(0,0,0,0.4);
   border: 1px solid var(--glass-border); border-radius: 12px; color: var(--text-primary);
@@ -132,7 +132,7 @@ nav {
 }
 .btn {
   width: 100%; padding: 0.9rem; border: none; border-radius: 12px;
-  font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+  font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer;
   transition: all 0.3s; position: relative; overflow: hidden;
   text-transform: uppercase; letter-spacing: 1px;
 }
@@ -141,36 +141,55 @@ nav {
   color: #fff; box-shadow: 0 5px 20px rgba(0,240,255,0.4);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,240,255,0.6); }
+.btn-primary:active { transform: translateY(0); }
 .btn-secondary {
   background: transparent; border: 1px solid var(--glass-border); color: var(--text-primary);
 }
 .btn-secondary:hover { border-color: var(--neon-pink); color: var(--neon-pink); }
 .btn-danger {
-  background: linear-gradient(90deg, var(--neon-pink), var(--neon-red));
-  color: #fff; box-shadow: 0 5px 20px rgba(255,0,110,0.4);
+  background: linear-gradient(90deg, var(--danger), #ff4081);
+  color: #fff; box-shadow: 0 5px 20px rgba(255,56,96,0.4);
 }
-.btn-danger:hover { box-shadow: 0 10px 30px rgba(255,0,110,0.6); }
+.btn-danger:hover { box-shadow: 0 10px 30px rgba(255,56,96,0.6); transform: translateY(-2px); }
 .btn-success {
-  background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
-  color: #000; box-shadow: 0 5px 20px rgba(6,255,165,0.4);
+  background: linear-gradient(90deg, var(--neon-green), #00d4a0);
+  color: #000; box-shadow: 0 5px 20px rgba(6,255,165,0.3);
 }
-.auth-switch { text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem; }
+.btn-success:hover { box-shadow: 0 10px 30px rgba(6,255,165,0.5); transform: translateY(-2px); }
+.auth-switch { text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem; }
 .auth-switch a { color: var(--neon-cyan); text-decoration: none; font-weight: 700; cursor: pointer; }
 .auth-switch a:hover { text-shadow: 0 0 10px var(--neon-cyan); }
 .error-msg, .success-msg {
-  padding: 0.7rem; border-radius: 10px; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; display: none; animation: slideIn 0.3s;
+  padding: 0.7rem; border-radius: 10px; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; display: none;
 }
-.error-msg { background: rgba(255,0,110,0.15); border: 1px solid var(--neon-pink); color: var(--neon-pink); }
-.success-msg { background: rgba(6,255,165,0.15); border: 1px solid var(--neon-green); color: var(--neon-green); }
+.error-msg { background: rgba(255,56,96,0.15); border: 1px solid var(--danger); color: var(--danger); display: none; }
+.error-msg.show { display: block; }
+.success-msg { background: rgba(6,255,165,0.15); border: 1px solid var(--neon-green); color: var(--neon-green); display: none; }
+.success-msg.show { display: block; }
 
 /* CAPTCHA */
 .captcha-box {
-  display: flex; align-items: center; gap: 0.8rem;
+  display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;
   padding: 0.8rem; background: rgba(0,0,0,0.4);
-  border: 1px solid var(--glass-border); border-radius: 10px; margin-bottom: 0.5rem;
+  border: 1px solid var(--glass-border); border-radius: 12px;
 }
-.captcha-question { flex: 1; color: var(--neon-yellow); font-weight: 700; font-size: 1.1rem; font-family: 'Orbitron', sans-serif; }
-.captcha-refresh { background: transparent; border: none; color: var(--neon-cyan); cursor: pointer; font-size: 1.2rem; }
+.captcha-question {
+  flex: 1; color: var(--neon-yellow); font-weight: 700; font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+}
+.captcha-input {
+  width: 80px; padding: 0.5rem; background: rgba(0,0,0,0.6);
+  border: 1px solid var(--neon-yellow); border-radius: 8px;
+  color: var(--neon-yellow); text-align: center; font-family: 'Orbitron', sans-serif;
+  font-size: 1rem; font-weight: 700;
+}
+.captcha-input:focus { outline: none; box-shadow: 0 0 15px rgba(255,190,11,0.4); }
+.captcha-refresh {
+  background: transparent; border: 1px solid var(--neon-yellow); color: var(--neon-yellow);
+  width: 36px; height: 36px; border-radius: 8px; cursor: pointer;
+  font-size: 1.2rem; transition: 0.3s;
+}
+.captcha-refresh:hover { background: var(--neon-yellow); color: #000; }
 
 /* MAIN APP */
 .app-content { display: none; padding-top: 80px; }
@@ -190,7 +209,7 @@ nav {
   animation: glow 2s ease-in-out infinite alternate;
 }
 @keyframes glow { from { text-shadow: 0 0 20px var(--neon-cyan); } to { text-shadow: 0 0 40px var(--neon-cyan), 0 0 80px var(--neon-cyan); } }
-.hero-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+.hero-sub { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 .cta-btn {
   display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
   color: #fff; text-decoration: none; border-radius: 30px; font-weight: 700;
@@ -220,32 +239,7 @@ section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
 }
 .glass-card:hover { transform: translateY(-5px); border-color: var(--neon-cyan); box-shadow: 0 20px 40px rgba(0,240,255,0.2); }
 
-/* EDITABLE MODE */
-.edit-mode [data-editable] {
-  outline: 1px dashed rgba(0,240,255,0.4); cursor: text;
-  transition: all 0.2s; position: relative;
-}
-.edit-mode [data-editable]:hover {
-  outline: 2px solid var(--neon-cyan);
-  box-shadow: 0 0 15px rgba(0,240,255,0.3);
-  background: rgba(0,240,255,0.05);
-}
-.edit-mode [data-editable]::before {
-  content: '✎ EDIT'; position: absolute; top: -10px; right: 5px;
-  font-size: 0.65rem; background: var(--neon-cyan); color: #000;
-  padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;
-  opacity: 0; transition: opacity 0.2s;
-}
-.edit-mode [data-editable]:hover::before { opacity: 1; }
-.edit-banner {
-  position: fixed; top: 70px; left: 50%; transform: translateX(-50%);
-  z-index: 999; padding: 0.5rem 1.2rem; background: var(--neon-cyan); color: #000;
-  border-radius: 20px; font-weight: 700; font-size: 0.85rem;
-  box-shadow: 0 5px 20px rgba(0,240,255,0.5); display: none;
-}
-.edit-banner.active { display: block; animation: slideIn 0.3s; }
-
-/* SKILLS */
+/* SKILLS GRID */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
 .skill-item {
   background: var(--glass-bg); backdrop-filter: blur(15px);
@@ -259,13 +253,14 @@ section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
 /* TIMELINE */
 .timeline { position: relative; padding: 2rem 0; }
 .timeline::before {
-  content: ''; position: absolute; right: 50%; top: 0; bottom: 0; width: 2px;
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
   background: linear-gradient(180deg, var(--neon-cyan), var(--neon-pink));
   box-shadow: 0 0 10px var(--neon-cyan);
+  transform: translateX(-50%);
 }
-.timeline-item { padding: 1.5rem; position: relative; width: 45%; margin-bottom: 1rem; }
-.timeline-item:nth-child(odd) { margin-right: auto; text-align: left; }
-.timeline-item:nth-child(even) { margin-left: auto; text-align: right; }
+.timeline-item { padding: 1.5rem; position: relative; width: 45%; }
+.timeline-item:nth-child(odd) { margin-left: auto; text-align: left; }
+.timeline-item:nth-child(even) { margin-right: auto; text-align: right; }
 .timeline-item::before {
   content: ''; position: absolute; top: 2rem; width: 16px; height: 16px;
   background: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 20px var(--neon-cyan);
@@ -274,7 +269,7 @@ section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
 .timeline-item:nth-child(even)::before { right: -8px; }
 .timeline-year { color: var(--neon-pink); font-weight: 900; font-family: 'Orbitron', sans-serif; }
 .timeline-title { font-size: 1.2rem; margin: 0.3rem 0; color: var(--text-primary); }
-.timeline-desc { color: var(--text-muted); font-size: 0.9rem; }
+.timeline-desc { color: var(--text-muted); font-size: 0.95rem; }
 
 /* PROJECTS */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
@@ -288,39 +283,40 @@ section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
 .project-desc { color: var(--text-muted); font-size: 0.9rem; }
 
 /* DASHBOARD */
-.dashboard { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; padding: 2rem; max-width: 1400px; margin: 0 auto; }
+.dashboard { display: grid; grid-template-columns: 280px 1fr; gap: 2rem; padding: 2rem; max-width: 1400px; margin: 0 auto; }
 .sidebar {
   background: var(--glass-bg); backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border); border-radius: 20px; padding: 1.5rem; height: fit-content;
   position: sticky; top: 100px;
 }
-.sidebar-title { font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); margin-bottom: 1.5rem; text-align: center; font-size: 0.9rem; letter-spacing: 2px; }
+.sidebar-title { font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); margin-bottom: 1.5rem; text-align: center; font-size: 1.1rem; }
 .sidebar-menu { list-style: none; }
 .sidebar-menu li {
-  padding: 0.7rem 1rem; border-radius: 10px; cursor: pointer;
+  padding: 0.8rem 1rem; border-radius: 10px; cursor: pointer;
   transition: all 0.3s; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.7rem;
   font-size: 0.9rem;
 }
 .sidebar-menu li:hover, .sidebar-menu li.active { background: rgba(0,240,255,0.15); color: var(--neon-cyan); }
-.main-panel { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; min-height: 600px; }
+.main-panel { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; }
 .panel-section { display: none; }
 .panel-section.active { display: block; animation: fadeIn 0.4s; }
-.panel-title { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: var(--neon-cyan); margin-bottom: 1.5rem; letter-spacing: 1px; }
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+.panel-title { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--neon-cyan); margin-bottom: 1.5rem; }
 
-/* STATS */
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+/* STATS CARDS */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
 .stat-card { padding: 1.5rem; text-align: center; }
 .stat-num { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--neon-pink); }
-.stat-label { color: var(--text-muted); margin-top: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+.stat-label { color: var(--text-muted); margin-top: 0.5rem; font-size: 0.9rem; }
 
 /* TABLE */
 .data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-.data-table th, .data-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid var(--glass-border); font-size: 0.9rem; }
-.data-table th { color: var(--neon-cyan); font-weight: 700; font-family: 'Orbitron', sans-serif; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+.data-table th, .data-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid var(--glass-border); }
+.data-table th { color: var(--neon-cyan); font-weight: 700; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; }
 .data-table tr:hover { background: rgba(0,240,255,0.05); }
-.role-badge { padding: 0.3rem 0.7rem; border-radius: 12px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-.role-badge.admin { background: rgba(255,0,110,0.2); color: var(--neon-pink); }
-.role-badge.user { background: rgba(0,240,255,0.2); color: var(--neon-cyan); }
+.role-badge { padding: 0.3rem 0.7rem; border-radius: 12px; font-size: 0.75rem; font-weight: 700; font-family: 'Orbitron', sans-serif; }
+.role-badge.admin { background: rgba(255,0,110,0.2); color: var(--neon-pink); border: 1px solid var(--neon-pink); }
+.role-badge.user { background: rgba(0,240,255,0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); }
 .action-btn {
   background: transparent; border: 1px solid var(--neon-pink); color: var(--neon-pink);
   padding: 0.3rem 0.7rem; border-radius: 8px; cursor: pointer; font-family: inherit;
@@ -329,108 +325,94 @@ section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
 .action-btn:hover { background: var(--neon-pink); color: #fff; }
 .action-btn.edit { border-color: var(--neon-cyan); color: var(--neon-cyan); }
 .action-btn.edit:hover { background: var(--neon-cyan); color: var(--bg-dark); }
-.action-btn.danger { border-color: var(--neon-red); color: var(--neon-red); }
-.action-btn.danger:hover { background: var(--neon-red); color: #fff; }
+.action-btn.danger { border-color: var(--danger); color: var(--danger); }
+.action-btn.danger:hover { background: var(--danger); color: #fff; }
 
-/* CODE CONSOLE */
+/* EDITABLE TEXT */
+.editable-text {
+  border: 1px dashed transparent; border-radius: 6px; padding: 2px 4px;
+  transition: all 0.3s; cursor: text;
+}
+.editable-text:hover { border-color: var(--neon-cyan); background: rgba(0,240,255,0.05); }
+.editable-text:focus { outline: none; border-color: var(--neon-cyan); border-style: solid; background: rgba(0,0,0,0.4); }
+
+/* CODE EDITOR */
 .code-editor {
+  width: 100%; min-height: 300px; padding: 1rem;
   background: #0a0a18; border: 1px solid var(--neon-green); border-radius: 12px;
-  font-family: 'JetBrains Mono', monospace; min-height: 350px; padding: 0; overflow: hidden;
+  color: var(--neon-green); font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem; line-height: 1.6; resize: vertical;
+  box-shadow: inset 0 0 30px rgba(6,255,165,0.1);
 }
-.editor-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.5rem 1rem; background: rgba(6,255,165,0.1); border-bottom: 1px solid var(--neon-green);
+.code-editor:focus { outline: none; box-shadow: inset 0 0 30px rgba(6,255,165,0.2), 0 0 20px rgba(6,255,165,0.3); }
+.code-output {
+  margin-top: 1rem; padding: 1rem;
+  background: rgba(0,0,0,0.6); border: 1px solid var(--glass-border); border-radius: 12px;
+  color: var(--text-primary); font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem; min-height: 100px; white-space: pre-wrap; max-height: 300px; overflow-y: auto;
 }
-.editor-tabs { display: flex; gap: 0.5rem; }
-.editor-tab {
-  padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;
-  color: var(--text-muted); transition: 0.2s;
-}
-.editor-tab.active { background: var(--neon-green); color: #000; font-weight: 700; }
-.editor-actions { display: flex; gap: 0.5rem; }
-.editor-actions button {
-  background: transparent; border: 1px solid var(--neon-green); color: var(--neon-green);
-  padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 0.75rem;
-  transition: 0.2s;
-}
-.editor-actions button:hover { background: var(--neon-green); color: #000; }
-.editor-textarea {
-  width: 100%; min-height: 280px; padding: 1rem;
-  background: transparent; border: none; color: var(--neon-green); font-family: inherit; font-size: 0.9rem;
-  resize: vertical; outline: none; line-height: 1.6;
-}
-.console-output {
-  background: #000; border-top: 1px solid var(--neon-green); padding: 0.8rem 1rem;
-  min-height: 80px; max-height: 200px; overflow-y: auto;
-  font-family: inherit; font-size: 0.85rem; color: var(--neon-cyan);
-}
-.console-output .log-line { margin-bottom: 0.3rem; word-wrap: break-word; }
-.console-output .log-error { color: var(--neon-pink); }
-.console-output .log-success { color: var(--neon-green); }
-.console-output .log-warn { color: var(--neon-yellow); }
+.code-output.error { border-color: var(--danger); color: var(--danger); }
+.code-output.success { border-color: var(--neon-green); color: var(--neon-green); }
 
-/* CUSTOM MODAL */
+/* MODAL */
 .modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.75);
-  z-index: 2000; display: none; align-items: center; justify-content: center;
-  padding: 1rem; animation: fadeIn 0.2s;
-  backdrop-filter: blur(8px);
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 2rem;
+  animation: modalFade 0.3s;
 }
 .modal-overlay.active { display: flex; }
-.modal {
-  width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto;
+@keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+.modal-box {
   background: var(--glass-bg); backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
   border: 1px solid var(--glass-border); border-radius: 20px;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.6);
-  animation: slideIn 0.3s;
+  width: 100%; max-width: 500px; padding: 2rem;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(0,240,255,0.2);
+  position: relative; max-height: 90vh; overflow-y: auto;
+  animation: modalSlide 0.3s;
 }
-.modal-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--glass-border);
+@keyframes modalSlide { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-box.danger { border-color: var(--danger); box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(255,56,96,0.3); }
+.modal-title {
+  font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: var(--neon-cyan);
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
 }
-.modal-title { font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); font-size: 1.1rem; letter-spacing: 1px; }
-.modal-close {
-  background: transparent; border: none; color: var(--neon-pink);
-  font-size: 1.5rem; cursor: pointer; padding: 0; width: 30px; height: 30px;
-  display: flex; align-items: center; justify-content: center; border-radius: 50%;
-  transition: 0.2s;
-}
-.modal-close:hover { background: var(--neon-pink); color: #fff; }
-.modal-body { padding: 1.5rem; }
-.modal-footer {
-  padding: 1rem 1.5rem; border-top: 1px solid var(--glass-border);
-  display: flex; gap: 0.8rem; justify-content: flex-end;
-}
-.modal-footer .btn { width: auto; padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+.modal-box.danger .modal-title { color: var(--danger); }
+.modal-body { color: var(--text-primary); margin-bottom: 1.5rem; line-height: 1.6; }
+.modal-actions { display: flex; gap: 1rem; justify-content: flex-end; }
+.modal-actions .btn { width: auto; padding: 0.7rem 1.5rem; min-width: 120px; }
 
 /* TOAST */
-.toast-container { position: fixed; top: 90px; right: 20px; z-index: 3000; display: flex; flex-direction: column; gap: 0.5rem; }
 .toast {
-  padding: 0.8rem 1.2rem; border-radius: 12px; font-weight: 700; font-size: 0.85rem;
-  min-width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  animation: slideIn 0.3s; display: flex; align-items: center; gap: 0.5rem;
+  position: fixed; bottom: 30px; right: 30px; z-index: 3000;
+  padding: 1rem 1.5rem; border-radius: 12px;
+  font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.9rem;
+  background: var(--glass-bg); backdrop-filter: blur(20px);
+  border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px rgba(0,240,255,0.3);
+  animation: toastSlide 0.3s; max-width: 400px;
 }
-.toast.success { background: rgba(6,255,165,0.95); color: #000; border: 1px solid var(--neon-green); }
-.toast.error { background: rgba(255,0,110,0.95); color: #fff; border: 1px solid var(--neon-pink); }
-.toast.info { background: rgba(0,240,255,0.95); color: #000; border: 1px solid var(--neon-cyan); }
-.toast.warning { background: rgba(255,190,11,0.95); color: #000; border: 1px solid var(--neon-yellow); }
+.toast.success { border-color: var(--neon-green); color: var(--neon-green); }
+.toast.error { border-color: var(--danger); color: var(--danger); }
+.toast.warning { border-color: var(--neon-yellow); color: var(--neon-yellow); }
+@keyframes toastSlide { from { transform: translateX(120%); } to { transform: translateX(0); } }
 
 /* FOOTER */
-footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 4rem; font-size: 0.85rem; }
+footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid var(--glass-border); margin-top: 4rem; }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  nav { padding: 0.8rem 1rem; }
-  .nav-links { gap: 0.8rem; font-size: 0.8rem; }
-  .logo { font-size: 1rem; }
+  nav { padding: 0.8rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+  .nav-links { gap: 0.8rem; font-size: 0.75rem; order: 3; width: 100%; justify-content: center; }
+  .logo { font-size: 1.1rem; }
   .dashboard { grid-template-columns: 1fr; }
   .sidebar { position: static; }
-  .timeline::before { right: 20px; }
-  .timeline-item { width: 80%; }
+  .timeline::before { left: 20px; }
+  .timeline-item { width: 85%; }
   .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { margin: 0 0 1rem auto; text-align: right; }
-  .timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before { right: -8px; }
-  .data-table { font-size: 0.75rem; }
-  .data-table th, .data-table td { padding: 0.5rem 0.3rem; }
+  .timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before { left: -8px; right: auto; }
+  .modal-actions { flex-direction: column; }
+  .modal-actions .btn { width: 100%; }
 }
 </style>
 </head>
@@ -440,33 +422,31 @@ footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top
 <nav id="mainNav" style="display:none">
   <div class="logo">ARSHIA.CYBER</div>
   <ul class="nav-links">
-    <li><a href="#" onclick="showSection('home')">HOME</a></li>
-    <li><a href="#" onclick="showSection('skills')">SKILLS</a></li>
-    <li><a href="#" onclick="showSection('projects')">PROJECTS</a></li>
-    <li><a href="#" onclick="showSection('contact')">CONTACT</a></li>
-    <li><a href="#" onclick="showSection('dashboard')">DASHBOARD</a></li>
+    <li><a href="#" onclick="showSection('home'); return false;">HOME</a></li>
+    <li><a href="#" onclick="showSection('skills'); return false;">SKILLS</a></li>
+    <li><a href="#" onclick="showSection('projects'); return false;">PROJECTS</a></li>
+    <li><a href="#" onclick="showSection('contact'); return false;">CONTACT</a></li>
+    <li><a href="#" onclick="showSection('dashboard'); return false;">DASHBOARD</a></li>
   </ul>
   <div class="user-info" id="userInfo"></div>
 </nav>
-
-<div class="edit-banner" id="editBanner">✎ EDIT MODE ACTIVE — Click any text to edit</div>
 
 <!-- LOGIN -->
 <div class="auth-wrap" id="loginPage">
   <div class="auth-card">
     <h1 class="auth-title">LOGIN</h1>
-    <p class="auth-sub">// Enter the cyberpunk matrix</p>
+    <p class="auth-sub">⚡ Welcome to the Cyberpunk world</p>
     <div class="error-msg" id="loginError"></div>
     <form onsubmit="handleLogin(event)">
       <div class="form-group">
         <label>Username</label>
-        <input type="text" id="loginUsername" required placeholder="admin">
+        <input type="text" id="loginIdentifier" required placeholder="admin" autocomplete="username">
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" id="loginPassword" required placeholder="••••••••">
+        <input type="password" id="loginPassword" required placeholder="••••••••" autocomplete="current-password">
       </div>
-      <button type="submit" class="btn btn-primary">▶ LOGIN</button>
+      <button type="submit" class="btn btn-primary">Enter System</button>
     </form>
     <div class="auth-switch">
       No account? <a onclick="showAuth('signup')">Sign up</a>
@@ -481,71 +461,138 @@ footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top
 <div class="auth-wrap" id="signupPage" style="display:none">
   <div class="auth-card">
     <h1 class="auth-title">SIGN UP</h1>
-    <p class="auth-sub">// Create your identity</p>
+    <p class="auth-sub">🚀 Create your account</p>
     <div class="error-msg" id="signupError"></div>
     <div class="success-msg" id="signupSuccess"></div>
     <form onsubmit="handleSignup(event)">
       <div class="form-group">
         <label>Username</label>
-        <input type="text" id="signupUsername" required minlength="3" placeholder="cyberpunk_99">
+        <input type="text" id="signupUsername" required minlength="3" placeholder="myusername" autocomplete="username">
       </div>
       <div class="form-group">
         <label>Password (min 6 chars)</label>
-        <input type="password" id="signupPassword" required minlength="6" placeholder="••••••••">
+        <input type="password" id="signupPassword" required minlength="6" placeholder="••••••••" autocomplete="new-password">
       </div>
       <div class="form-group">
         <label>Confirm Password</label>
-        <input type="password" id="signupPasswordConfirm" required minlength="6" placeholder="••••••••">
+        <input type="password" id="signupPasswordConfirm" required minlength="6" placeholder="••••••••" autocomplete="new-password">
       </div>
-      <div class="form-group">
-        <label>Security Check</label>
-        <div class="captcha-box">
-          <span class="captcha-question" id="captchaQuestion">2 + 3 = ?</span>
-          <button type="button" class="captcha-refresh" onclick="generateCaptcha()" title="Refresh">↻</button>
-        </div>
-        <input type="number" id="signupCaptcha" required placeholder="Enter the answer">
+      <div class="captcha-box">
+        <div class="captcha-question" id="captchaQuestion">2 + 3 = ?</div>
+        <input type="number" class="captcha-input" id="captchaInput" required placeholder="?">
+        <button type="button" class="captcha-refresh" onclick="generateCaptcha()" title="Refresh">↻</button>
       </div>
-      <button type="submit" class="btn btn-primary">▶ CREATE ACCOUNT</button>
+      <button type="submit" class="btn btn-primary">Create Account</button>
     </form>
     <div class="auth-switch">
-      Already have an account? <a onclick="showAuth('login')">Login</a>
+      Have an account? <a onclick="showAuth('login')">Log in</a>
     </div>
+  </div>
+</div>
+
+<!-- CHANGE PASSWORD PAGE -->
+<div class="auth-wrap" id="changePassPage" style="display:none">
+  <div class="auth-card">
+    <h1 class="auth-title">🔑 CHANGE PASSWORD</h1>
+    <p class="auth-sub">Update your security credentials</p>
+    <div class="error-msg" id="changePassError"></div>
+    <div class="success-msg" id="changePassSuccess"></div>
+    <form onsubmit="handleChangePassword(event)">
+      <div class="form-group">
+        <label>Current Password</label>
+        <input type="password" id="currentPassword" required placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <div class="form-group">
+        <label>New Password (min 6 chars)</label>
+        <input type="password" id="newPassword" required minlength="6" placeholder="••••••••" autocomplete="new-password">
+      </div>
+      <div class="form-group">
+        <label>Confirm New Password</label>
+        <input type="password" id="newPasswordConfirm" required minlength="6" placeholder="••••••••" autocomplete="new-password">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Password</button>
+      <button type="button" class="btn btn-secondary" style="margin-top:0.5rem" onclick="showSection('dashboard')">Cancel</button>
+    </form>
   </div>
 </div>
 
 <!-- MAIN APP -->
 <main class="app-content" id="mainApp">
-  <!-- HOME -->
+  <!-- HOME / HERO -->
   <div class="panel-section active" id="section-home">
     <section class="hero">
       <div class="hero-content">
-        <h1 class="glitch" data-text="ARSHIA.CYBER" data-editable data-key="heroTitle">ARSHIA.CYBER</h1>
-        <p class="hero-sub" data-editable data-key="heroSub" data-multiline>Konkur student • Future doctor/dentist • Tech & cyberpunk enthusiast from Kerman, Iran</p>
-        <button class="cta-btn" onclick="showSection('projects')">VIEW PROJECTS</button>
+        <h1 class="glitch" data-text="ARSHIA.CYBER" id="heroTitle">ARSHIA.CYBER</h1>
+        <p class="hero-sub" id="heroSub">High school student • Goal: Medicine/Dentistry • Passionate about technology and the cyberpunk world</p>
+        <button class="cta-btn" onclick="showSection('projects')">View Projects</button>
       </div>
     </section>
 
     <section id="skills">
-      <h2 class="section-title" data-editable data-key="skillsTitle">SKILLS</h2>
-      <div class="skills-grid" id="skillsGrid"></div>
+      <h2 class="section-title">SKILLS</h2>
+      <div class="skills-grid">
+        <div class="skill-item"><div class="skill-icon">💻</div><div class="skill-name">Programming</div></div>
+        <div class="skill-item"><div class="skill-icon">🎨</div><div class="skill-name">UI/UX Design</div></div>
+        <div class="skill-item"><div class="skill-icon">⚡</div><div class="skill-name">Web Tech</div></div>
+        <div class="skill-item"><div class="skill-icon">📚</div><div class="skill-name">Biology</div></div>
+        <div class="skill-item"><div class="skill-icon">🧠</div><div class="skill-name">Deep Learning</div></div>
+        <div class="skill-item"><div class="skill-icon">🚀</div><div class="skill-name">Personal Projects</div></div>
+      </div>
     </section>
 
     <section>
-      <h2 class="section-title" data-editable data-key="timelineTitle">JOURNEY</h2>
-      <div class="timeline" id="timelineContainer"></div>
+      <h2 class="section-title">MY JOURNEY</h2>
+      <div class="timeline">
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-title">Started Konkur Prep</div>
+          <div class="timeline-desc">Goal: Getting accepted to Medicine or Dentistry</div>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-title">Learning Programming</div>
+          <div class="timeline-desc">HTML, CSS, JavaScript and web design</div>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-title">Built First Website</div>
+          <div class="timeline-desc">Personal portfolio with cyberpunk style and full auth system</div>
+        </div>
+        <div class="timeline-item glass-card">
+          <div class="timeline-year">2027</div>
+          <div class="timeline-title">University</div>
+          <div class="timeline-desc">Entering Medical or Dental School</div>
+        </div>
+      </div>
     </section>
 
     <section id="projects">
-      <h2 class="section-title" data-editable data-key="projectsTitle">PROJECTS</h2>
-      <div class="projects-grid" id="projectsGrid"></div>
+      <h2 class="section-title">PROJECTS</h2>
+      <div class="projects-grid">
+        <div class="glass-card project-card">
+          <div class="project-img">🌐</div>
+          <h3 class="project-title">Personal Website</h3>
+          <p class="project-desc">Cyberpunk-styled portfolio with full authentication system, admin panel, and content management</p>
+        </div>
+        <div class="glass-card project-card">
+          <div class="project-img">📰</div>
+          <h3 class="project-title">News Bot</h3>
+          <p class="project-desc">Telegram bot for automated daily news reporting</p>
+        </div>
+        <div class="glass-card project-card">
+          <div class="project-img">🎮</div>
+          <h3 class="project-title">Python Game</h3>
+          <p class="project-desc">Guess-the-scorer game for the 2026 World Cup built with Python</p>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
-      <h2 class="section-title" data-editable data-key="contactTitle">CONTACT</h2>
+      <h2 class="section-title">GET IN TOUCH</h2>
       <div class="glass-card" style="max-width:500px; margin:0 auto; text-align:center;">
-        <p style="margin-bottom:1rem;" data-editable data-key="contactLine1">📱 Telegram: <b>@ars0h1a</b></p>
-        <p style="margin-bottom:1rem;" data-editable data-key="contactLine2">📍 Kerman, Iran</p>
-        <p data-editable data-key="contactLine3">🎯 18 years old, Konkur student</p>
+        <p style="margin-bottom:1rem;">📱 Telegram: <b>@ars0h1a</b></p>
+        <p style="margin-bottom:1rem;">📍 Kerman, Iran</p>
+        <p>🎯 18 years old, Konkur student</p>
       </div>
     </section>
   </div>
@@ -554,127 +601,136 @@ footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top
   <div class="panel-section" id="section-dashboard">
     <div class="dashboard">
       <aside class="sidebar">
-        <h3 class="sidebar-title">⚡ CONTROL PANEL</h3>
+        <h3 class="sidebar-title">⚡ USER PANEL</h3>
         <ul class="sidebar-menu">
-          <li class="active" onclick="showPanel('profile')">👤 My Profile</li>
-          <li onclick="showPanel('changePass')">🔑 Change Password</li>
-          <li id="adminMenuEdit" style="display:none" onclick="toggleEditMode()">✎ Edit Site Content</li>
-          <li id="adminMenuUsers" style="display:none" onclick="showPanel('users')">👥 Manage Users</li>
-          <li id="adminMenuConsole" style="display:none" onclick="showPanel('console')">💻 Code Console</li>
-          <li id="adminMenuContent" style="display:none" onclick="showPanel('siteContent')">🎨 Content Editor</li>
-          <li onclick="showPanel('settings')">⚙️ Settings</li>
+          <li class="active" data-panel="profile" onclick="showPanel('profile', this)">👤 My Profile</li>
+          <li id="adminMenuUsers" style="display:none" data-panel="users" onclick="showPanel('users', this)">👥 Manage Users</li>
+          <li id="adminMenuSite" style="display:none" data-panel="site" onclick="showPanel('site', this)">✏️ Edit Site Text</li>
+          <li id="adminMenuConsole" style="display:none" data-panel="console" onclick="showPanel('console', this)">⚡ Code Console</li>
+          <li data-panel="settings" onclick="showPanel('settings', this)">⚙️ Settings</li>
         </ul>
       </aside>
 
       <div class="main-panel">
         <!-- PROFILE -->
         <div class="panel-section active" id="panel-profile">
-          <h2 class="panel-title">👤 MY PROFILE</h2>
-          <div class="glass-card" id="profileCard"></div>
-        </div>
-
-        <!-- CHANGE PASSWORD -->
-        <div class="panel-section" id="panel-changePass">
-          <h2 class="panel-title">🔑 CHANGE PASSWORD</h2>
-          <div class="glass-card" style="max-width:500px;">
-            <form onsubmit="handleChangePassword(event)">
-              <div class="form-group">
-                <label>Current Password</label>
-                <input type="password" id="cpCurrent" required>
-              </div>
-              <div class="form-group">
-                <label>New Password (min 6 chars)</label>
-                <input type="password" id="cpNew" required minlength="6">
-              </div>
-              <div class="form-group">
-                <label>Confirm New Password</label>
-                <input type="password" id="cpConfirm" required minlength="6">
-              </div>
-              <button type="submit" class="btn btn-primary">▶ UPDATE PASSWORD</button>
-            </form>
+          <h2 class="panel-title">👤 My Profile</h2>
+          <div class="glass-card">
+            <p style="margin-bottom:0.8rem"><b>Username:</b> <span id="profileName">-</span></p>
+            <p style="margin-bottom:0.8rem"><b>Role:</b> <span id="profileRole">-</span></p>
+            <p style="margin-bottom:0.8rem"><b>Joined:</b> <span id="profileDate">-</span></p>
+            <p style="margin-bottom:0.8rem"><b>Last Login:</b> <span id="profileLastLogin">Just now</span></p>
+            <p><b>User ID:</b> <code style="color:var(--neon-cyan)" id="profileId">-</code></p>
           </div>
         </div>
 
-        <!-- USERS (admin only) -->
+        <!-- ADMIN: USERS -->
         <div class="panel-section" id="panel-users">
-          <h2 class="panel-title">👥 USER MANAGEMENT</h2>
-          <div class="stats-grid" id="usersStats"></div>
+          <h2 class="panel-title">👥 User Management</h2>
+          <div class="stats-grid">
+            <div class="glass-card stat-card">
+              <div class="stat-num" id="totalUsers">0</div>
+              <div class="stat-label">Total Users</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-num" id="activeUsers">0</div>
+              <div class="stat-label">Active Users</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-num" id="adminCount">0</div>
+              <div class="stat-label">Admins</div>
+            </div>
+          </div>
           <div style="overflow-x:auto;">
-            <table class="data-table">
-              <thead><tr><th>ID</th><th>Username</th><th>Role</th><th>Password</th><th>Joined</th><th>Last Login</th><th>Actions</th></tr></thead>
+            <table class="data-table" id="usersTable">
+              <thead>
+                <tr><th>Username</th><th>Role</th><th>Password</th><th>Joined</th><th>Actions</th></tr>
+              </thead>
               <tbody id="usersTableBody"></tbody>
             </table>
           </div>
         </div>
 
-        <!-- CONSOLE (admin only) -->
-        <div class="panel-section" id="panel-console">
-          <h2 class="panel-title">💻 CODE CONSOLE</h2>
-          <p style="color:var(--text-muted); margin-bottom:1rem; font-size:0.9rem;">// Write and execute JavaScript. Results appear below. Available: <code>getUsers()</code>, <code>getCurrentUser()</code>, <code>localStorage</code></p>
-          <div class="code-editor">
-            <div class="editor-header">
-              <div class="editor-tabs">
-                <div class="editor-tab active">JS</div>
+        <!-- ADMIN: SITE TEXT EDITOR -->
+        <div class="panel-section" id="panel-site">
+          <h2 class="panel-title">✏️ Edit Site Text (Live)</h2>
+          <div class="glass-card">
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">Click on any text in the live preview to edit it. Changes are saved instantly.</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; margin-top:1rem;">
+              <div>
+                <h3 style="color:var(--neon-cyan); font-family:'Orbitron',sans-serif; margin-bottom:1rem; font-size:1rem;">📝 EDIT FIELDS</h3>
+                <div class="form-group">
+                  <label>Hero Title</label>
+                  <input type="text" id="editHeroTitle" value="ARSHIA.CYBER" oninput="updateLiveText('heroTitle', this.value)">
+                </div>
+                <div class="form-group">
+                  <label>Hero Subtitle</label>
+                  <textarea id="editHeroSub" rows="3" oninput="updateLiveText('heroSub', this.value)">High school student • Goal: Medicine/Dentistry • Passionate about technology and the cyberpunk world</textarea>
+                </div>
+                <div class="form-group">
+                  <label>Skills Title</label>
+                  <input type="text" id="editSkillsTitle" value="SKILLS" oninput="updateLiveText('skillsTitle', this.value)">
+                </div>
+                <div class="form-group">
+                  <label>Projects Title</label>
+                  <input type="text" id="editProjectsTitle" value="PROJECTS" oninput="updateLiveText('projectsTitle', this.value)">
+                </div>
+                <div class="form-group">
+                  <label>Contact Title</label>
+                  <input type="text" id="editContactTitle" value="GET IN TOUCH" oninput="updateLiveText('contactTitle', this.value)">
+                </div>
+                <button class="btn btn-success" onclick="saveSiteContent()">💾 Save All Changes</button>
               </div>
-              <div class="editor-actions">
-                <button onclick="clearConsole()">Clear Output</button>
-                <button onclick="runCode()">▶ RUN</button>
+              <div>
+                <h3 style="color:var(--neon-cyan); font-family:'Orbitron',sans-serif; margin-bottom:1rem; font-size:1rem;">👁️ LIVE PREVIEW</h3>
+                <div class="glass-card" style="padding:1.5rem; min-height:400px;">
+                  <h2 id="previewHeroTitle" class="glitch" style="font-size:2rem; margin-bottom:0.5rem;" data-text="ARSHIA.CYBER">ARSHIA.CYBER</h2>
+                  <p id="previewHeroSub" style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">High school student • Goal: Medicine/Dentistry</p>
+                  <h4 id="previewSkillsTitle" style="color:var(--neon-cyan); font-family:'Orbitron',sans-serif;">SKILLS</h4>
+                  <h4 id="previewProjectsTitle" style="color:var(--neon-cyan); font-family:'Orbitron',sans-serif; margin-top:0.5rem;">PROJECTS</h4>
+                  <h4 id="previewContactTitle" style="color:var(--neon-cyan); font-family:'Orbitron',sans-serif; margin-top:0.5rem;">GET IN TOUCH</h4>
+                  <p style="color:var(--text-muted); font-size:0.8rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--glass-border);">
+                    ✨ Edit fields on the left to see changes here in real-time
+                  </p>
+                </div>
               </div>
             </div>
-            <textarea class="editor-textarea" id="codeEditor" placeholder="// Write your JavaScript here...
-console.log('Hello from console!');
-console.log('Total users:', getUsers().length);">// Welcome to Code Console
-// Try these:
-console.log('Current user:', getCurrentUser());
-console.log('Total users:', getUsers().length);
-
-// List all usernames
-getUsers().forEach(u => console.log('  -', u.username, '(' + u.role + ')'));</textarea>
-            <div class="console-output" id="consoleOutput"></div>
           </div>
         </div>
 
-        <!-- CONTENT EDITOR (admin only) -->
-        <div class="panel-section" id="panel-siteContent">
-          <h2 class="panel-title">🎨 CONTENT EDITOR</h2>
-          <p style="color:var(--text-muted); margin-bottom:1rem; font-size:0.9rem;">// Edit raw content fields. Or use Edit Mode from sidebar to click-and-edit any text on the site.</p>
+        <!-- ADMIN: CODE CONSOLE -->
+        <div class="panel-section" id="panel-console">
+          <h2 class="panel-title">⚡ Code Console (JavaScript)</h2>
           <div class="glass-card">
-            <form onsubmit="saveContentFields(event)">
+            <p style="color:var(--text-muted); margin-bottom:1rem;">Execute JavaScript code in the browser context. <b style="color:var(--neon-yellow)">⚠️ Use with caution</b> - this has full access to localStorage and page state.</p>
+            <form onsubmit="runCode(event)">
               <div class="form-group">
-                <label>Hero Title</label>
-                <input type="text" id="ce_heroTitle">
+                <label style="color:var(--neon-green)">&gt; Write code here:</label>
+                <textarea id="codeInput" class="code-editor" placeholder="// Example:
+// Get all users
+const users = JSON.parse(localStorage.getItem('arshia_users'));
+console.log(users);
+
+// Modify a value
+localStorage.setItem('test', 'hello');
+return 'Code executed! Found ' + users.length + ' users.';">// Try running some code here!
+const users = JSON.parse(localStorage.getItem('arshia_users') || '[]');
+const siteContent = JSON.parse(localStorage.getItem('arshia_site_content') || '{}');
+return 'Users: ' + users.length + ' | Site has: ' + Object.keys(siteContent).length + ' fields';</textarea>
               </div>
-              <div class="form-group">
-                <label>Hero Subtitle</label>
-                <textarea id="ce_heroSub" rows="3"></textarea>
-              </div>
-              <div class="form-group">
-                <label>Skills Title</label>
-                <input type="text" id="ce_skillsTitle">
-              </div>
-              <div class="form-group">
-                <label>Timeline Title</label>
-                <input type="text" id="ce_timelineTitle">
-              </div>
-              <div class="form-group">
-                <label>Projects Title</label>
-                <input type="text" id="ce_projectsTitle">
-              </div>
-              <div class="form-group">
-                <label>Contact Title</label>
-                <input type="text" id="ce_contactTitle">
-              </div>
-              <button type="submit" class="btn btn-primary">💾 SAVE ALL</button>
+              <button type="submit" class="btn btn-success">▶ RUN CODE</button>
+              <button type="button" class="btn btn-secondary" onclick="clearCodeOutput()" style="margin-top:0.5rem">Clear Output</button>
             </form>
+            <div class="code-output" id="codeOutput">[Output will appear here]</div>
           </div>
         </div>
 
         <!-- SETTINGS -->
         <div class="panel-section" id="panel-settings">
-          <h2 class="panel-title">⚙️ SETTINGS</h2>
+          <h2 class="panel-title">⚙️ Settings</h2>
           <div class="glass-card">
-            <h3 style="color:var(--neon-cyan); margin-bottom:1rem; font-family:'Orbitron',sans-serif; font-size:1rem;">ACCOUNT</h3>
-            <button class="btn btn-secondary" onclick="showPanel('changePass')" style="margin-bottom:0.8rem;">🔑 Change Password</button>
+            <p style="margin-bottom:1.5rem;">Manage your account security and session.</p>
+            <button class="btn btn-primary" onclick="showChangePassword()" style="margin-bottom:0.8rem;">🔑 Change Password</button>
             <button class="btn btn-danger" onclick="confirmLogout()">🚪 Logout</button>
           </div>
         </div>
@@ -689,194 +745,152 @@ getUsers().forEach(u => console.log('  -', u.username, '(' + u.role + ')'));</te
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <div class="modal-header">
-      <h3 class="modal-title" id="modalTitle">Confirm</h3>
-      <button class="modal-close" onclick="closeModal()">×</button>
+  <div class="modal-box" id="modalBox">
+    <h3 class="modal-title" id="modalTitle">Confirm</h3>
+    <div class="modal-body" id="modalBody">Are you sure?</div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" id="modalConfirmBtn">Confirm</button>
     </div>
-    <div class="modal-body" id="modalBody"></div>
-    <div class="modal-footer" id="modalFooter"></div>
   </div>
 </div>
 
-<!-- TOAST CONTAINER -->
-<div class="toast-container" id="toastContainer"></div>
-
 <script>
 // ========== STORAGE ==========
-const KEYS = { USERS:'arshia_users_v3', SESSION:'arshia_session_v3', CONTENT:'arshia_content_v3' };
-
-const DEFAULT_CONTENT = {
-  heroTitle: 'ARSHIA.CYBER',
-  heroSub: 'Konkur student • Future doctor/dentist • Tech & cyberpunk enthusiast from Kerman, Iran',
-  skillsTitle: 'SKILLS',
-  timelineTitle: 'JOURNEY',
-  projectsTitle: 'PROJECTS',
-  contactTitle: 'CONTACT',
-  contactLine1: '📱 Telegram: <b>@ars0h1a</b>',
-  contactLine2: '📍 Kerman, Iran',
-  contactLine3: '🎯 18 years old, Konkur student'
-};
-
-const DEFAULT_SKILLS = [
-  { icon: '💻', name: 'Programming' },
-  { icon: '🎨', name: 'UI/UX Design' },
-  { icon: '⚡', name: 'Web Technologies' },
-  { icon: '📚', name: 'Biology' },
-  { icon: '🧠', name: 'Deep Learning' },
-  { icon: '🚀', name: 'Personal Projects' }
-];
-
-const DEFAULT_TIMELINE = [
-  { year: '2024', title: 'Konkur Journey Begins', desc: 'Goal: Medical or Dental school' },
-  { year: '2025', title: 'Learning Programming', desc: 'HTML, CSS, JavaScript & web design' },
-  { year: '2026', title: 'First Website Built', desc: 'Personal site with cyberpunk theme' },
-  { year: '2027', title: 'University', desc: 'Entering Medical or Dental faculty' }
-];
-
-const DEFAULT_PROJECTS = [
-  { icon: '🌐', title: 'Personal Site', desc: 'First site with cyberpunk design & auth system' },
-  { icon: '📰', title: 'Telegram Bot', desc: 'Auto-reporting bot for World Cup results' },
-  { icon: '🎮', title: 'Python Game', desc: 'Guess the World Cup goal scorer game' }
-];
+const KEYS = { USERS: 'arshia_users', SESSION: 'arshia_session', SITE: 'arshia_site_content' };
 
 function initStorage() {
   if (!localStorage.getItem(KEYS.USERS)) {
-    saveUsers([{
+    const defaults = [{
       id: 1, username: 'admin', password: 'admin123', role: 'admin',
       createdAt: new Date().toISOString(), lastLogin: null
-    }]);
+    }];
+    localStorage.setItem(KEYS.USERS, JSON.stringify(defaults));
   }
-  if (!localStorage.getItem(KEYS.CONTENT)) {
-    saveContent(DEFAULT_CONTENT);
+  if (!localStorage.getItem(KEYS.SITE)) {
+    localStorage.setItem(KEYS.SITE, JSON.stringify({
+      heroTitle: 'ARSHIA.CYBER',
+      heroSub: 'High school student • Goal: Medicine/Dentistry • Passionate about technology and the cyberpunk world',
+      skillsTitle: 'SKILLS',
+      projectsTitle: 'PROJECTS',
+      contactTitle: 'GET IN TOUCH'
+    }));
   }
 }
-function getUsers() { return JSON.parse(localStorage.getItem(KEYS.USERS) || '[]'); }
-function saveUsers(u) { localStorage.setItem(KEYS.USERS, JSON.stringify(u)); }
-function getCurrentUser() { const s = localStorage.getItem(KEYS.SESSION); return s ? JSON.parse(s) : null; }
-function setSession(u) {
-  localStorage.setItem(KEYS.SESSION, JSON.stringify(u));
+const getUsers = () => JSON.parse(localStorage.getItem(KEYS.USERS) || '[]');
+const saveUsers = (u) => localStorage.setItem(KEYS.USERS, JSON.stringify(u));
+const getCurrentUser = () => {
+  const s = localStorage.getItem(KEYS.SESSION);
+  return s ? JSON.parse(s) : null;
+};
+const setSession = (user) => {
+  localStorage.setItem(KEYS.SESSION, JSON.stringify(user));
   const users = getUsers();
-  const i = users.findIndex(x => x.id === u.id);
-  if (i >= 0) { users[i].lastLogin = new Date().toISOString(); saveUsers(users); }
-}
-function clearSession() { localStorage.removeItem(KEYS.SESSION); }
-function getContent() { return Object.assign({}, DEFAULT_CONTENT, JSON.parse(localStorage.getItem(KEYS.CONTENT) || '{}')); }
-function saveContent(c) { localStorage.setItem(KEYS.CONTENT, JSON.stringify(c)); }
+  const idx = users.findIndex(u => u.id === user.id);
+  if (idx >= 0) { users[idx].lastLogin = new Date().toISOString(); saveUsers(users); }
+};
+const clearSession = () => localStorage.removeItem(KEYS.SESSION);
+const getSiteContent = () => JSON.parse(localStorage.getItem(KEYS.SITE) || '{}');
 
-// ========== TOAST & MODAL ==========
-function toast(msg, type = 'info') {
-  const c = document.getElementById('toastContainer');
-  const t = document.createElement('div');
-  t.className = 'toast ' + type;
-  t.textContent = msg;
-  c.appendChild(t);
-  setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(400px)'; setTimeout(() => t.remove(), 300); }, 3000);
-}
-
-function showModal({ title, body, footer }) {
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalBody').innerHTML = body;
-  document.getElementById('modalFooter').innerHTML = footer || '';
-  document.getElementById('modalOverlay').classList.add('active');
-}
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('active');
-}
-
-function confirmAction({ title = 'Confirm', message, confirmText = 'Confirm', cancelText = 'Cancel', danger = false, onConfirm }) {
-  showModal({
-    title,
-    body: `<p style="color:var(--text-primary); line-height:1.6;">${message}</p>`,
-    footer: `
-      <button class="btn btn-secondary" onclick="closeModal()">${cancelText}</button>
-      <button class="btn ${danger ? 'btn-danger' : 'btn-primary'}" id="modalConfirmBtn">${confirmText}</button>
-    `
-  });
-  document.getElementById('modalConfirmBtn').onclick = () => { closeModal(); if (onConfirm) onConfirm(); };
-}
-
-// ========== CAPTCHA ==========
+// ========== AUTH ==========
 let captchaAnswer = 0;
 function generateCaptcha() {
   const a = Math.floor(Math.random() * 9) + 1;
   const b = Math.floor(Math.random() * 9) + 1;
   captchaAnswer = a + b;
   document.getElementById('captchaQuestion').textContent = `${a} + ${b} = ?`;
-  document.getElementById('signupCaptcha').value = '';
+  document.getElementById('captchaInput').value = '';
 }
 
-// ========== AUTH ==========
 function showAuth(page) {
   document.getElementById('loginPage').style.display = page === 'login' ? 'flex' : 'none';
   document.getElementById('signupPage').style.display = page === 'signup' ? 'flex' : 'none';
-  ['loginError', 'signupError', 'signupSuccess'].forEach(id => {
-    const el = document.getElementById(id); if (el) { el.textContent = ''; el.style.display = 'none'; }
-  });
+  document.getElementById('changePassPage').style.display = 'none';
+  clearMsg('loginError'); clearMsg('signupError'); clearMsg('signupSuccess');
   if (page === 'signup') generateCaptcha();
 }
+
+function clearMsg(id) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = ''; el.classList.remove('show'); }
+}
 function showMsg(id, text) {
-  const el = document.getElementById(id); el.textContent = text; el.style.display = 'block';
+  const el = document.getElementById(id);
+  if (el) { el.textContent = text; el.classList.add('show'); }
 }
 
 function handleLogin(e) {
   e.preventDefault();
-  const username = document.getElementById('loginUsername').value.trim();
-  const password = document.getElementById('loginPassword').value;
+  clearMsg('loginError');
+  const id = document.getElementById('loginIdentifier').value.trim();
+  const pass = document.getElementById('loginPassword').value;
   const users = getUsers();
-  const user = users.find(u => u.username === username && u.password === password);
-  if (!user) { showMsg('loginError', '❌ Invalid username or password'); return; }
+  const user = users.find(u => u.username === id && u.password === pass);
+  if (!user) { showMsg('loginError', '❌ Wrong username or password'); return; }
   setSession(user);
-  toast('Welcome back, ' + user.username + '!', 'success');
   enterApp();
+  showToast('Welcome back, ' + user.username + '!', 'success');
 }
 
 function handleSignup(e) {
   e.preventDefault();
+  clearMsg('signupError'); clearMsg('signupSuccess');
   const username = document.getElementById('signupUsername').value.trim();
-  const password = document.getElementById('signupPassword').value;
-  const confirm = document.getElementById('signupPasswordConfirm').value;
-  const captchaInput = parseInt(document.getElementById('signupCaptcha').value);
-  if (username.length < 3) { showMsg('signupError', '❌ Username must be at least 3 characters'); return; }
-  if (password.length < 6) { showMsg('signupError', '❌ Password must be at least 6 characters'); return; }
-  if (password !== confirm) { showMsg('signupError', '❌ Passwords do not match'); return; }
-  if (captchaInput !== captchaAnswer) { showMsg('signupError', '❌ Incorrect captcha answer'); generateCaptcha(); return; }
+  const pass = document.getElementById('signupPassword').value;
+  const passConfirm = document.getElementById('signupPasswordConfirm').value;
+  const captchaVal = parseInt(document.getElementById('captchaInput').value);
+  if (pass !== passConfirm) { showMsg('signupError', '❌ Passwords do not match'); return; }
+  if (captchaVal !== captchaAnswer) { showMsg('signupError', '❌ Wrong captcha answer'); generateCaptcha(); return; }
   const users = getUsers();
-  if (users.find(u => u.username === username)) { showMsg('signupError', '❌ Username already taken'); return; }
-  const newUser = { id: Date.now(), username, password, role: 'user', createdAt: new Date().toISOString(), lastLogin: null };
+  if (users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
+    showMsg('signupError', '❌ Username already taken'); return;
+  }
+  const newUser = {
+    id: Date.now(), username, password: pass, role: 'user',
+    createdAt: new Date().toISOString(), lastLogin: null
+  };
   users.push(newUser); saveUsers(users);
   showMsg('signupSuccess', '✅ Account created! Logging you in...');
   setSession(newUser);
-  setTimeout(() => enterApp(), 1000);
+  setTimeout(() => { enterApp(); showToast('Welcome, ' + username + '!', 'success'); }, 1000);
 }
 
-function confirmLogout() {
-  confirmAction({
-    title: '⚠️ Logout Confirmation',
-    message: 'Are you sure you want to logout from your account?',
-    confirmText: 'Yes, Logout',
-    danger: true,
-    onConfirm: () => { clearSession(); toast('Logged out successfully', 'info'); setTimeout(() => location.reload(), 500); }
-  });
+function showChangePassword() {
+  document.getElementById('mainApp').classList.remove('active');
+  document.getElementById('mainNav').style.display = 'none';
+  document.getElementById('changePassPage').style.display = 'flex';
+  clearMsg('changePassError'); clearMsg('changePassSuccess');
 }
 
 function handleChangePassword(e) {
   e.preventDefault();
+  clearMsg('changePassError'); clearMsg('changePassSuccess');
   const user = getCurrentUser(); if (!user) return;
-  const current = document.getElementById('cpCurrent').value;
-  const newPass = document.getElementById('cpNew').value;
-  const confirm = document.getElementById('cpConfirm').value;
-  if (current !== user.password) { toast('Current password is incorrect', 'error'); return; }
-  if (newPass.length < 6) { toast('New password must be at least 6 chars', 'error'); return; }
-  if (newPass !== confirm) { toast('New passwords do not match', 'error'); return; }
+  const current = document.getElementById('currentPassword').value;
+  const newP = document.getElementById('newPassword').value;
+  const confirm = document.getElementById('newPasswordConfirm').value;
+  if (current !== user.password) { showMsg('changePassError', '❌ Current password is incorrect'); return; }
+  if (newP !== confirm) { showMsg('changePassError', '❌ New passwords do not match'); return; }
+  if (newP.length < 6) { showMsg('changePassError', '❌ Password must be at least 6 characters'); return; }
   const users = getUsers();
-  const i = users.findIndex(u => u.id === user.id);
-  if (i >= 0) {
-    users[i].password = newPass; saveUsers(users);
-    user.password = newPass; setSession(user);
-    toast('Password updated successfully!', 'success');
-    e.target.reset();
-  }
+  const idx = users.findIndex(u => u.id === user.id);
+  users[idx].password = newP; saveUsers(users);
+  user.password = newP; setSession(user);
+  showMsg('changePassSuccess', '✅ Password updated successfully!');
+  document.getElementById('currentPassword').value = '';
+  document.getElementById('newPassword').value = '';
+  document.getElementById('newPasswordConfirm').value = '';
+  showToast('Password changed!', 'success');
+  setTimeout(() => { showSection('dashboard'); }, 1500);
+}
+
+function confirmLogout() {
+  showModal('Logout', 'Are you sure you want to logout from your account?', () => {
+    clearSession();
+    closeModal();
+    showToast('Logged out successfully', 'success');
+    setTimeout(() => location.reload(), 500);
+  }, true);
 }
 
 // ========== APP ==========
@@ -884,261 +898,207 @@ function enterApp() {
   const user = getCurrentUser(); if (!user) return;
   document.getElementById('loginPage').style.display = 'none';
   document.getElementById('signupPage').style.display = 'none';
+  document.getElementById('changePassPage').style.display = 'none';
   document.getElementById('mainNav').style.display = 'flex';
   document.getElementById('mainApp').classList.add('active');
   document.getElementById('userInfo').innerHTML = `
     <span class="user-badge ${user.role}">${user.role === 'admin' ? '👑 ADMIN' : '👤 USER'}</span>
-    <span style="color:var(--text-primary); font-weight:700;">${user.username}</span>
-    <button class="logout-btn" onclick="confirmLogout()">LOGOUT</button>
+    <span style="color:var(--text-primary); font-weight:700; font-size:0.9rem;">${user.username}</span>
+    <button class="logout-btn" onclick="confirmLogout()">Logout</button>
   `;
   if (user.role === 'admin') {
-    ['adminMenuEdit', 'adminMenuUsers', 'adminMenuConsole', 'adminMenuContent'].forEach(id => {
-      document.getElementById(id).style.display = 'flex';
-    });
+    document.getElementById('adminMenuUsers').style.display = 'flex';
+    document.getElementById('adminMenuSite').style.display = 'flex';
+    document.getElementById('adminMenuConsole').style.display = 'flex';
   }
-  renderHome(); renderProfile(); if (user.role === 'admin') renderUsersTable();
+  loadSiteContent();
+  loadProfile();
+  if (user.role === 'admin') loadUsersTable();
 }
 
 function showSection(s) {
-  document.querySelectorAll('#mainApp > .panel-section').forEach(p => p.classList.remove('active'));
-  document.getElementById('section-' + s).classList.add('active');
+  if (s === 'dashboard') {
+    document.querySelectorAll('#section-home, #section-dashboard').forEach(el => el.classList.remove('active'));
+    document.getElementById('section-dashboard').classList.add('active');
+  } else {
+    document.querySelectorAll('#section-home, #section-dashboard').forEach(el => el.classList.remove('active'));
+    document.getElementById('section-' + s).classList.add('active');
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (s === 'dashboard') {
-    const u = getCurrentUser();
-    renderProfile();
-    if (u && u.role === 'admin') renderUsersTable();
+    const user = getCurrentUser();
+    if (user && user.role === 'admin') loadUsersTable();
+    loadProfile();
   }
 }
 
-function showPanel(p) {
-  document.querySelectorAll('#section-dashboard .panel-section').forEach(el => el.classList.remove('active'));
+function showPanel(p, el) {
+  document.querySelectorAll('#section-dashboard .panel-section').forEach(s => s.classList.remove('active'));
   document.getElementById('panel-' + p).classList.add('active');
   document.querySelectorAll('.sidebar-menu li').forEach(li => li.classList.remove('active'));
-  if (event && event.currentTarget) event.currentTarget.classList.add('active');
-  if (p === 'users') renderUsersTable();
-  if (p === 'siteContent') loadContentEditor();
+  if (el) el.classList.add('active');
+  if (p === 'users') loadUsersTable();
 }
 
-function renderHome() {
-  const c = getContent();
-  document.querySelector('[data-key="heroTitle"]').textContent = c.heroTitle;
-  document.querySelector('[data-key="heroTitle"]').setAttribute('data-text', c.heroTitle);
-  document.querySelector('[data-key="heroSub"]').textContent = c.heroSub;
-  ['skillsTitle', 'timelineTitle', 'projectsTitle', 'contactTitle', 'contactLine1', 'contactLine2', 'contactLine3'].forEach(k => {
-    const el = document.querySelector(`[data-key="${k}"]`);
-    if (el) {
-      if (k.startsWith('contactLine')) el.innerHTML = c[k];
-      else el.textContent = c[k];
-    }
-  });
-  // Skills
-  document.getElementById('skillsGrid').innerHTML = DEFAULT_SKILLS.map(s => `
-    <div class="skill-item"><div class="skill-icon">${s.icon}</div><div class="skill-name">${s.name}</div></div>
-  `).join('');
-  // Timeline
-  document.getElementById('timelineContainer').innerHTML = DEFAULT_TIMELINE.map(t => `
-    <div class="timeline-item glass-card">
-      <div class="timeline-year">${t.year}</div>
-      <div class="timeline-title">${t.title}</div>
-      <div class="timeline-desc">${t.desc}</div>
-    </div>
-  `).join('');
-  // Projects
-  document.getElementById('projectsGrid').innerHTML = DEFAULT_PROJECTS.map(p => `
-    <div class="glass-card project-card">
-      <div class="project-img">${p.icon}</div>
-      <h3 class="project-title">${p.title}</h3>
-      <p class="project-desc">${p.desc}</p>
-    </div>
-  `).join('');
-  applyEditMode();
-}
-
-function renderProfile() {
+function loadProfile() {
   const u = getCurrentUser(); if (!u) return;
-  document.getElementById('profileCard').innerHTML = `
-    <p style="margin-bottom:0.8rem;"><b style="color:var(--neon-cyan)">Username:</b> <span>${u.username}</span></p>
-    <p style="margin-bottom:0.8rem;"><b style="color:var(--neon-cyan)">Role:</b> <span class="role-badge ${u.role}">${u.role === 'admin' ? 'ADMIN' : 'USER'}</span></p>
-    <p style="margin-bottom:0.8rem;"><b style="color:var(--neon-cyan)">User ID:</b> <code>${u.id}</code></p>
-    <p style="margin-bottom:0.8rem;"><b style="color:var(--neon-cyan)">Joined:</b> <span>${new Date(u.createdAt).toLocaleString('en-US')}</span></p>
-    <p><b style="color:var(--neon-cyan)">Last Login:</b> <span>${u.lastLogin ? new Date(u.lastLogin).toLocaleString('en-US') : 'Just now'}</span></p>
-  `;
+  document.getElementById('profileName').textContent = u.username;
+  document.getElementById('profileRole').innerHTML = u.role === 'admin' ? '<span class="role-badge admin">👑 ADMIN</span>' : '<span class="role-badge user">👤 USER</span>';
+  document.getElementById('profileDate').textContent = new Date(u.createdAt).toLocaleDateString('en-US');
+  document.getElementById('profileLastLogin').textContent = u.lastLogin ? new Date(u.lastLogin).toLocaleString('en-US') : 'Just now';
+  document.getElementById('profileId').textContent = '#' + u.id;
 }
 
-function renderUsersTable() {
+function loadUsersTable() {
   const u = getCurrentUser(); if (!u || u.role !== 'admin') return;
   const users = getUsers();
-  document.getElementById('usersStats').innerHTML = `
-    <div class="glass-card stat-card"><div class="stat-num">${users.length}</div><div class="stat-label">Total Users</div></div>
-    <div class="glass-card stat-card"><div class="stat-num">${users.filter(x => x.lastLogin).length}</div><div class="stat-label">Active</div></div>
-    <div class="glass-card stat-card"><div class="stat-num">${users.filter(x => x.role === 'admin').length}</div><div class="stat-label">Admins</div></div>
-  `;
+  document.getElementById('totalUsers').textContent = users.length;
+  document.getElementById('activeUsers').textContent = users.filter(x => x.lastLogin).length;
+  document.getElementById('adminCount').textContent = users.filter(x => x.role === 'admin').length;
   document.getElementById('usersTableBody').innerHTML = users.map(user => `
     <tr>
-      <td>${user.id}</td>
       <td><b>${user.username}</b></td>
-      <td><span class="role-badge ${user.role}">${user.role}</span></td>
-      <td><code style="color:var(--neon-pink)">${user.password}</code></td>
+      <td><span class="role-badge ${user.role}">${user.role.toUpperCase()}</span></td>
+      <td><code style="color:var(--neon-pink); font-size:0.85rem;">${user.password}</code></td>
       <td>${new Date(user.createdAt).toLocaleDateString('en-US')}</td>
-      <td>${user.lastLogin ? new Date(user.lastLogin).toLocaleString('en-US') : '—'}</td>
       <td>
-        ${user.id !== u.id ? `
-          <button class="action-btn edit" onclick="toggleUserRole(${user.id})">${user.role === 'admin' ? '→ USER' : '→ ADMIN'}</button>
-          <button class="action-btn danger" onclick="deleteUserConfirm(${user.id})">DELETE</button>
-        ` : '<span style="color:var(--text-muted)">— YOU —</span>'}
+        ${user.id !== u.id ? `<button class="action-btn edit" onclick="toggleUserRole(${user.id})">${user.role === 'admin' ? '→ User' : '→ Admin'}</button><button class="action-btn danger" onclick="confirmDeleteUser(${user.id})">Delete</button>` : '<span style="color:var(--text-muted)">— YOU —</span>'}
       </td>
     </tr>
   `).join('');
 }
 
+function confirmDeleteUser(id) {
+  const user = getUsers().find(u => u.id === id);
+  if (!user) return;
+  showModal('Delete User', `Are you sure you want to delete user <b>${user.username}</b>? This action cannot be undone.`, () => {
+    let users = getUsers();
+    users = users.filter(u => u.id !== id);
+    saveUsers(users);
+    loadUsersTable();
+    closeModal();
+    showToast('User deleted', 'success');
+  }, true);
+}
+
 function toggleUserRole(id) {
-  const users = getUsers();
-  const u = users.find(x => x.id === id);
-  if (!u) return;
-  const newRole = u.role === 'admin' ? 'user' : 'admin';
-  confirmAction({
-    title: '🔄 Change Role',
-    message: `Change <b>${u.username}</b> from <b>${u.role}</b> to <b>${newRole}</b>?`,
-    confirmText: 'Yes, Change',
-    onConfirm: () => {
-      const i = users.findIndex(x => x.id === id);
-      users[i].role = newRole; saveUsers(users);
-      renderUsersTable();
-      toast(`Role updated: ${u.username} is now ${newRole}`, 'success');
+  const user = getUsers().find(u => u.id === id);
+  if (!user) return;
+  const newRole = user.role === 'admin' ? 'user' : 'admin';
+  showModal('Change Role', `Change <b>${user.username}</b>'s role from <b>${user.role}</b> to <b>${newRole}</b>?`, () => {
+    const users = getUsers();
+    const idx = users.findIndex(u => u.id === id);
+    users[idx].role = newRole; saveUsers(users);
+    loadUsersTable();
+    closeModal();
+    showToast(`Role updated to ${newRole}`, 'success');
+  }, false);
+}
+
+function loadSiteContent() {
+  const c = getSiteContent();
+  if (c.heroTitle) {
+    document.getElementById('heroTitle').textContent = c.heroTitle;
+    document.getElementById('heroTitle').setAttribute('data-text', c.heroTitle);
+  }
+  if (c.heroSub) document.getElementById('heroSub').textContent = c.heroSub;
+  if (c.skillsTitle) document.querySelector('#skills .section-title').textContent = c.skillsTitle;
+  if (c.projectsTitle) document.querySelector('#projects .section-title').textContent = c.projectsTitle;
+  if (c.contactTitle) document.querySelector('#contact .section-title').textContent = c.contactTitle;
+  // Fill edit fields
+  document.getElementById('editHeroTitle').value = c.heroTitle || 'ARSHIA.CYBER';
+  document.getElementById('editHeroSub').value = c.heroSub || '';
+  document.getElementById('editSkillsTitle').value = c.skillsTitle || 'SKILLS';
+  document.getElementById('editProjectsTitle').value = c.projectsTitle || 'PROJECTS';
+  document.getElementById('editContactTitle').value = c.contactTitle || 'GET IN TOUCH';
+}
+
+function updateLiveText(field, value) {
+  const mapping = {
+    heroTitle: ['heroTitle', 'previewHeroTitle'],
+    heroSub: ['heroSub', 'previewHeroSub'],
+    skillsTitle: ['previewSkillsTitle'],
+    projectsTitle: ['previewProjectsTitle'],
+    contactTitle: ['previewContactTitle']
+  };
+  const targets = mapping[field] || [];
+  targets.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.textContent = value;
+      if (id === 'heroTitle') el.setAttribute('data-text', value);
     }
   });
 }
 
-function deleteUserConfirm(id) {
-  const users = getUsers();
-  const u = users.find(x => x.id === id);
-  if (!u) return;
-  confirmAction({
-    title: '⚠️ Delete User',
-    message: `Are you sure you want to delete <b>${u.username}</b>? This cannot be undone.`,
-    confirmText: 'Yes, Delete',
-    danger: true,
-    onConfirm: () => {
-      const newUsers = users.filter(x => x.id !== id);
-      saveUsers(newUsers);
-      renderUsersTable();
-      toast(`User ${u.username} deleted`, 'warning');
-    }
-  });
-}
-
-// ========== EDIT MODE ==========
-let editMode = false;
-function toggleEditMode() {
-  editMode = !editMode;
-  document.body.classList.toggle('edit-mode', editMode);
-  document.getElementById('editBanner').classList.toggle('active', editMode);
-  toast(editMode ? '✎ Edit Mode ON — click any text' : 'Edit Mode OFF', 'info');
-  applyEditMode();
-}
-
-function applyEditMode() {
-  document.querySelectorAll('[data-editable]').forEach(el => {
-    el.onclick = null;
-    if (editMode) {
-      el.onclick = (e) => {
-        e.stopPropagation();
-        const key = el.getAttribute('data-key');
-        const multiline = el.hasAttribute('data-multiline');
-        const isHTML = el.innerHTML.includes('<');
-        const current = isHTML ? el.innerHTML : el.textContent;
-        if (multiline || isHTML) {
-          showModal({
-            title: '✎ Edit Content',
-            body: `<div class="form-group"><label>Content (HTML allowed)</label><textarea id="editField" rows="5" style="width:100%;padding:0.8rem;background:rgba(0,0,0,0.4);border:1px solid var(--glass-border);border-radius:10px;color:#fff;font-family:inherit;">${current.replace(/</g, '&lt;')}</textarea></div>`,
-            footer: `<button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveInlineEdit('${key}', true)">💾 Save</button>`
-          });
-        } else {
-          showModal({
-            title: '✎ Edit Content',
-            body: `<div class="form-group"><label>Content</label><input type="text" id="editField" value="${current.replace(/"/g, '&quot;')}" style="width:100%;padding:0.8rem;background:rgba(0,0,0,0.4);border:1px solid var(--glass-border);border-radius:10px;color:#fff;font-family:inherit;"></div>`,
-            footer: `<button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveInlineEdit('${key}', false)">💾 Save</button>`
-          });
-        }
-        setTimeout(() => { const f = document.getElementById('editField'); if (f) { f.focus(); f.select(); } }, 100);
-      };
-    }
-  });
-}
-
-function saveInlineEdit(key, isHTML) {
-  const val = document.getElementById('editField').value;
-  const c = getContent();
-  c[key] = isHTML ? val.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&') : val;
-  saveContent(c);
-  closeModal();
-  renderHome();
-  loadContentEditor();
-  toast('Content saved!', 'success');
-}
-
-function loadContentEditor() {
-  const c = getContent();
-  ['heroTitle', 'heroSub', 'skillsTitle', 'timelineTitle', 'projectsTitle', 'contactTitle'].forEach(k => {
-    const el = document.getElementById('ce_' + k);
-    if (el) el.value = c[k] || '';
-  });
-}
-
-function saveContentFields(e) {
-  e.preventDefault();
-  const c = getContent();
-  ['heroTitle', 'heroSub', 'skillsTitle', 'timelineTitle', 'projectsTitle', 'contactTitle'].forEach(k => {
-    const el = document.getElementById('ce_' + k);
-    if (el) c[k] = el.value;
-  });
-  saveContent(c);
-  renderHome();
-  toast('All content saved!', 'success');
+function saveSiteContent() {
+  const c = {
+    heroTitle: document.getElementById('editHeroTitle').value,
+    heroSub: document.getElementById('editHeroSub').value,
+    skillsTitle: document.getElementById('editSkillsTitle').value,
+    projectsTitle: document.getElementById('editProjectsTitle').value,
+    contactTitle: document.getElementById('editContactTitle').value
+  };
+  localStorage.setItem(KEYS.SITE, JSON.stringify(c));
+  loadSiteContent();
+  showToast('Site content saved!', 'success');
 }
 
 // ========== CODE CONSOLE ==========
-function logToConsole(msg, type = '') {
-  const out = document.getElementById('consoleOutput');
-  const line = document.createElement('div');
-  line.className = 'log-line ' + (type ? 'log-' + type : '');
-  const t = new Date().toLocaleTimeString();
-  const text = typeof msg === 'object' ? JSON.stringify(msg, null, 2) : String(msg);
-  line.innerHTML = `<span style="color:var(--text-muted)">[${t}]</span> ${text.replace(/\n/g, '<br>')}`;
-  out.appendChild(line);
-  out.scrollTop = out.scrollHeight;
-}
-
-function clearConsole() {
-  document.getElementById('consoleOutput').innerHTML = '';
-  toast('Console cleared', 'info');
-}
-
-function runCode() {
-  const code = document.getElementById('codeEditor').value;
-  logToConsole('▶ Running...', 'info');
-  const origLog = console.log;
-  const origErr = console.error;
-  const origWarn = console.warn;
-  console.log = (...args) => { logToConsole(args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' ')); };
-  console.error = (...args) => { logToConsole(args.join(' '), 'error'); };
-  console.warn = (...args) => { logToConsole(args.join(' '), 'warn'); };
+function runCode(e) {
+  e.preventDefault();
+  const code = document.getElementById('codeInput').value;
+  const out = document.getElementById('codeOutput');
+  out.className = 'code-output';
   try {
-    const result = new Function('getUsers', 'getCurrentUser', 'localStorage', 'toast', code)(getUsers, getCurrentUser, localStorage, toast);
-    if (result !== undefined) logToConsole('→ ' + (typeof result === 'object' ? JSON.stringify(result, null, 2) : result), 'success');
-    logToConsole('✓ Done', 'success');
+    const consoleLog = [];
+    const mockConsole = { log: (...args) => consoleLog.push(args.map(String).join(' ')) };
+    const fn = new Function('console', code);
+    const result = fn(mockConsole);
+    let output = consoleLog.join('\n');
+    if (result !== undefined) output += (output ? '\n→ ' : '') + String(result);
+    out.textContent = output || '✅ Code executed (no output)';
+    out.classList.add('success');
   } catch (err) {
-    logToConsole('✗ ' + err.message, 'error');
-  } finally {
-    console.log = origLog; console.error = origErr; console.warn = origWarn;
+    out.textContent = '❌ ERROR:\n' + err.message;
+    out.classList.add('error');
   }
+}
+function clearCodeOutput() {
+  const out = document.getElementById('codeOutput');
+  out.textContent = '[Output will appear here]';
+  out.className = 'code-output';
+}
+
+// ========== MODAL ==========
+let modalCallback = null;
+function showModal(title, body, onConfirm, isDanger = false) {
+  document.getElementById('modalTitle').innerHTML = (isDanger ? '⚠️ ' : '') + title;
+  document.getElementById('modalBody').innerHTML = body;
+  document.getElementById('modalBox').className = 'modal-box' + (isDanger ? ' danger' : '');
+  const btn = document.getElementById('modalConfirmBtn');
+  btn.className = 'btn ' + (isDanger ? 'btn-danger' : 'btn-primary');
+  btn.textContent = isDanger ? 'Delete' : 'Confirm';
+  btn.onclick = () => { if (modalCallback) modalCallback(); };
+  modalCallback = onConfirm;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); modalCallback = null; }
+document.getElementById('modalOverlay').addEventListener('click', (e) => { if (e.target.id === 'modalOverlay') closeModal(); });
+
+// ========== TOAST ==========
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.animation = 'toastSlide 0.3s reverse'; setTimeout(() => t.remove(), 300); }, 3000);
 }
 
 // ========== INIT ==========
 initStorage();
 const session = getCurrentUser();
 if (session) enterApp();
-generateCaptcha();
 </script>
 </body>
 </html>
